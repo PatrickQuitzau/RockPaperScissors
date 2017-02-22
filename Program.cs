@@ -32,13 +32,23 @@ namespace RockPaperScissors
                     int gameMode;
                     Console.WriteLine("1) Player vs Player");
                     Console.WriteLine("2) Player vs AI");
+                    Console.WriteLine("3) Tournament");
                     List<Player> players;
                     gameMode = int.Parse(Console.ReadLine());
                     if (gameMode == 1)
                     {
-                        players = definePlayers();
+                        players = definePlayers(2);
                         defineHand(players);
                         compareHands(players);
+                    }
+                    else if (gameMode == 3)
+                    {
+                        int userInputNum;
+                        Console.Clear();
+                        Console.WriteLine("How many players will participate in the tournament?");
+                        userInputNum = int.Parse(Console.ReadLine());
+                        players = definePlayers(userInputNum);
+
                     }
                     else
                     {
@@ -54,6 +64,7 @@ namespace RockPaperScissors
                         defineHand(players);
                         compareHands(players);
                     }
+                    
                     
                     do
                     {
@@ -119,10 +130,11 @@ namespace RockPaperScissors
 
         
 
-        public static List<Player> definePlayers() //Command, defines the player names dependant on player input
+        public static List<Player> definePlayers(int numOfPlayers) //Command, defines the player names dependant on player input
         {
             List<Player> players = new List<Player>();
-            for (int i = 0; i < 2; i++)
+
+            for (int i = 0; i < numOfPlayers; i++)
             {
                 Console.Clear();
                 string name;
@@ -264,6 +276,11 @@ namespace RockPaperScissors
                 Console.WriteLine("Press enter to continue");
                 Console.ReadLine();
             }
+        }
+
+        public void PlayTournament()
+        {
+            
         }
     }
 }
